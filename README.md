@@ -12,10 +12,6 @@ List of available projects and their description:
 
 Description
 
-[More Info](./Hebb%20Network%20-%20AND%20Gate/README.md)
-
 #### Hebb Network - X/O Recognition
 
 Description
-
-[More Info](./Hebb%20Network%20-%20X_O%20Recognition/README.md)

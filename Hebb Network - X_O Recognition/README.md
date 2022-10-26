@@ -1,3 +1,0 @@
-# Hebb Network - X_O Recognition
-
-Description ...
