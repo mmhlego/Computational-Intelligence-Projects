@@ -14,8 +14,8 @@ export interface ProjectInfo {
 	title: string;
 	description: string;
 	algorithm: string;
-	input: string;
-	output: string;
+	input?: string;
+	output?: string;
 	children: React.ReactNode;
 }
 
