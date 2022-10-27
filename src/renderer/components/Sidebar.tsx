@@ -11,6 +11,7 @@ export default function Sidebar({ selectedProject, onItemClicked }: Props) {
 		<div className="w-1/4 h-screen shadow-white-md bg-[#282c34] box-border p-2">
 			{Projects.map((item) => (
 				<MenuItem
+					key={item.title}
 					selected={selectedProject === item}
 					project={item}
 					onClick={() => {

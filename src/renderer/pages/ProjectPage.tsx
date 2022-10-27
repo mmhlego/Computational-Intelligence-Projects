@@ -16,7 +16,7 @@ export default function ProjectPage({ project }: Props) {
 			{Info ? (
 				<Information project={project} onClick={() => setInfo(false)} />
 			) : (
-				<p>Project</p>
+				project.children
 			)}
 		</div>
 	);
