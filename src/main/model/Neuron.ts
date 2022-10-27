@@ -1,3 +1,4 @@
+import p5Types from 'p5';
 import { ActivationFunctionType } from './ActivationFunctions';
 import Edge from './Edge';
 
@@ -11,6 +12,8 @@ export default class Neuron {
 
 	// Neurons activation function
 	private ActivationFunction: ActivationFunctionType;
+
+	private IsActive: boolean = false;
 
 	// Constructor
 	constructor(
@@ -39,6 +42,8 @@ export default class Neuron {
 				},found: ${neurons.length})`
 			);
 
+		this.IsActive = true;
+
 		let sum = 1 * this.ConnectedEdges[0].Weight;
 
 		for (let i = 0; i < neurons.length; i += 1) {
@@ -50,5 +55,34 @@ export default class Neuron {
 
 	SetValue = (value: number) => {
 		this.Value = value;
+	};
+
+	GetEdge = (node: number) => {
+		return this.ConnectedEdges[1 + node];
+	};
+
+	GetBias = (node: number) => {
+		return this.ConnectedEdges[0];
+	};
+
+	Draw = (p5: p5Types, x: number, y: number) => {
+		// CreateHoverText(
+		// 	p5,
+		// 	x,
+		// 	y,
+		// 	20,
+		// 	20,
+		// 	'#canvasHolder',
+		// 	JSON.stringify(this)
+		// );
+
+		p5.fill(255);
+		p5.stroke(255);
+		p5.ellipse(x, y, 20);
+
+		p5.fill(50);
+		p5.stroke(255);
+		p5.textSize(15);
+		p5.text(this.IsActive ? this.Value : '', x, y);
 	};
 }
