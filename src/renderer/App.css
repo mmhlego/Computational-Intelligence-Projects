@@ -14,3 +14,21 @@ body {
 	font-family: sans-serif;
 	overflow: hidden;
 }
+
+/*
+ * Custom scrollbar thanks to: https://scottspence.com/posts/change-scrollbar-color-tailwind-css
+ */
+
+*::-webkit-scrollbar {
+	width: 15px;
+}
+
+*::-webkit-scrollbar-track {
+	background: #ffffff10;
+	border-radius: 5px;
+}
+
+*::-webkit-scrollbar-thumb {
+	background-color: #282c34;
+	border-radius: 5px;
+}

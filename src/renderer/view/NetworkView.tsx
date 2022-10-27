@@ -42,23 +42,20 @@ export default function NetworkView({ network, width, height }: Props) {
 		const layerWidth = (width - 80) / (network.Size - 1);
 		for (let i = 0; i < network.Size; i += 1) {
 			const neurons = network.Neurons[i].length;
-			const layerHeight = (height - 80) / neurons;
+			const layerHeight = height / neurons;
 
 			for (let j = 0; j < neurons; j += 1) {
 				const x1 = i * layerWidth + 40;
-				const y1 = j * layerHeight + layerHeight / 2 + 40;
+				const y1 = j * layerHeight + layerHeight / 2;
 
 				if (i > 0) {
 					const previousNeurons = network.Neurons[i - 1].length;
-					const previousLayerHeight = (height - 80) / previousNeurons;
+					const previousLayerHeight = height / previousNeurons;
 
 					for (let k = 0; k < previousNeurons; k += 1) {
 						const x2 = (i - 1) * layerWidth + 40;
 						const y2 =
-							k * previousLayerHeight +
-							previousLayerHeight / 2 +
-							40;
-
+							k * previousLayerHeight + previousLayerHeight / 2;
 						drawEdge(
 							p5,
 							x1,
@@ -74,11 +71,11 @@ export default function NetworkView({ network, width, height }: Props) {
 
 		for (let i = 0; i < network.Size; i += 1) {
 			const neurons = network.Neurons[i].length;
-			const layerHeight = (height - 80) / neurons;
+			const layerHeight = height / neurons;
 
 			for (let j = 0; j < neurons; j += 1) {
 				const x1 = i * layerWidth + 40;
-				const y1 = j * layerHeight + layerHeight / 2 + 40;
+				const y1 = j * layerHeight + layerHeight / 2;
 				network.Neurons[i][j].Draw(p5, x1, y1);
 			}
 		}

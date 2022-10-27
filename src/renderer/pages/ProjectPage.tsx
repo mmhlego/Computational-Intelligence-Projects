@@ -12,11 +12,13 @@ export default function ProjectPage({ project }: Props) {
 	useEffect(() => setInfo(true), [project]);
 
 	return (
-		<div className="w-3/4 flex flex-col justify-center gap-6 items-center">
+		<div className="w-3/4 h-screen flex flex-col justify-center gap-6 items-center overflow-y-auto ">
 			{Info ? (
 				<Information project={project} onClick={() => setInfo(false)} />
 			) : (
-				project.children
+				<div className="min-h-screen w-full p-6">
+					{project.children}
+				</div>
 			)}
 		</div>
 	);
