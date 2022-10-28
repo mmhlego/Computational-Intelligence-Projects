@@ -1,5 +1,7 @@
+import { HardLimit } from 'main/model/ActivationFunctions';
 import Edge from 'main/model/Edge';
 import Network from 'main/model/Network';
+import Neuron from 'main/model/Neuron';
 import p5Types from 'p5';
 import Sketch from 'react-p5';
 
@@ -10,7 +12,7 @@ interface Props {
 }
 
 export default function NetworkView({ network, width, height }: Props) {
-	console.log(network);
+	const layerWidth = (width - 80) / (network.Size - 1);
 
 	const drawEdge = (
 		p5: p5Types,
@@ -35,11 +37,7 @@ export default function NetworkView({ network, width, height }: Props) {
 		p5.text(edge.Weight, x3, y3);
 	};
 
-	const setup = (p5: p5Types, canvasParentRef: Element) => {
-		p5.createCanvas(width, height).parent(canvasParentRef);
-		p5.textAlign('center', 'center');
-
-		const layerWidth = (width - 80) / (network.Size - 1);
+	const drawEdges = (p5: p5Types) => {
 		for (let i = 0; i < network.Size; i += 1) {
 			const neurons = network.Neurons[i].length;
 			const layerHeight = height / neurons;
@@ -49,11 +47,20 @@ export default function NetworkView({ network, width, height }: Props) {
 				const y1 = j * layerHeight + layerHeight / 2;
 
 				if (i > 0) {
-					const previousNeurons = network.Neurons[i - 1].length;
+					const x2 = (i - 1) * layerWidth + 40;
+					const previousNeurons = network.Neurons[i - 1].length + 1;
 					const previousLayerHeight = height / previousNeurons;
 
-					for (let k = 0; k < previousNeurons; k += 1) {
-						const x2 = (i - 1) * layerWidth + 40;
+					drawEdge(
+						p5,
+						x1,
+						y1,
+						x2,
+						previousLayerHeight / 2,
+						network.Neurons[i][j].GetBias()
+					);
+
+					for (let k = 1; k < previousNeurons; k += 1) {
 						const y2 =
 							k * previousLayerHeight + previousLayerHeight / 2;
 						drawEdge(
@@ -62,26 +69,53 @@ export default function NetworkView({ network, width, height }: Props) {
 							y1,
 							x2,
 							y2,
-							network.Neurons[i][j].GetEdge(k)
+							network.Neurons[i][j].GetEdge(k - 1)
 						);
 					}
 				}
 			}
 		}
+	};
+
+	const drawNodes = (p5: p5Types) => {
+		const BiasNode = new Neuron(HardLimit);
+		BiasNode.SetValue(1);
 
 		for (let i = 0; i < network.Size; i += 1) {
-			const neurons = network.Neurons[i].length;
+			const hasBias = i < network.Size - 1;
+			const neurons = network.Neurons[i].length + (hasBias ? 1 : 0);
 			const layerHeight = height / neurons;
 
 			for (let j = 0; j < neurons; j += 1) {
 				const x1 = i * layerWidth + 40;
 				const y1 = j * layerHeight + layerHeight / 2;
-				network.Neurons[i][j].Draw(p5, x1, y1);
+				if (hasBias) {
+					if (j === 0) {
+						BiasNode.Draw(p5, x1, y1);
+					} else {
+						network.Neurons[i][j - (hasBias ? 1 : 0)].Draw(
+							p5,
+							x1,
+							y1
+						);
+					}
+				} else {
+					network.Neurons[i][j - (hasBias ? 1 : 0)].Draw(p5, x1, y1);
+				}
 			}
 		}
 	};
 
-	const draw = (p5: p5Types) => {};
+	const setup = (p5: p5Types, canvasParentRef: Element) => {
+		p5.createCanvas(width, height).parent(canvasParentRef);
+		p5.textAlign('center', 'center');
+	};
+
+	const draw = (p5: p5Types) => {
+		p5.clear();
+		drawEdges(p5);
+		drawNodes(p5);
+	};
 
 	return (
 		<div id="canvasHolder" className="relative">
