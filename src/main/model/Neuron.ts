@@ -8,7 +8,7 @@ export default class Neuron {
 
 	// w_0 w_1 ... w_n
 	// w_0 represents the bias value and the others represent the weight between the weight between the current and the ith neuron on the previous layer
-	private ConnectedEdges: Edge[] = [];
+	public ConnectedEdges: Edge[] = [];
 
 	// Neurons activation function
 	private ActivationFunction: ActivationFunctionType;
@@ -55,13 +55,18 @@ export default class Neuron {
 
 	SetValue = (value: number) => {
 		this.Value = value;
+		this.SetActive(true);
+	};
+
+	SetActive = (active: boolean) => {
+		this.IsActive = active;
 	};
 
 	GetEdge = (node: number) => {
 		return this.ConnectedEdges[1 + node];
 	};
 
-	GetBias = (node: number) => {
+	GetBias = () => {
 		return this.ConnectedEdges[0];
 	};
 
@@ -78,11 +83,11 @@ export default class Neuron {
 
 		p5.fill(255);
 		p5.stroke(255);
-		p5.ellipse(x, y, 20);
+		p5.ellipse(x, y, 30);
 
 		p5.fill(50);
 		p5.stroke(255);
-		p5.textSize(15);
+		p5.textSize(20);
 		p5.text(this.IsActive ? this.Value : '', x, y);
 	};
 }
