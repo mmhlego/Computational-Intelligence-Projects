@@ -64,6 +64,8 @@ export class MyP5 {
 		const angle = this.p5.atan2(from.y - to.y, from.x - to.x);
 		const size = 6;
 
+		this.p5.fill(this.color);
+		this.p5.stroke(this.color);
 		this.p5.push();
 		this.p5.translate(to.x, to.y);
 		this.p5.rotate(angle);
