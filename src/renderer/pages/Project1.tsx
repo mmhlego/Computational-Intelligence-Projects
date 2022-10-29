@@ -4,6 +4,7 @@ import HebbNetwork from 'main/model/HebbNetwork';
 import NetworkData from 'main/model/NetworkData';
 import { useState } from 'react';
 import TrainDataTable from 'renderer/components/TrainDataTable';
+import CartesianView from 'renderer/view/CartesianView';
 import NetworkView from 'renderer/view/NetworkView';
 
 export default function Project1() {
@@ -17,11 +18,11 @@ export default function Project1() {
 			Output: [1],
 		},
 		{
-			Input: [-1, 1],
+			Input: [1, -1],
 			Output: [-1],
 		},
 		{
-			Input: [1, -1],
+			Input: [-1, 1],
 			Output: [-1],
 		},
 		{
@@ -86,8 +87,13 @@ export default function Project1() {
 				</div>
 			</div>
 
-			<div className="row-span-2 border-lightBlue border-[1px] rounded-md">
-				Graph
+			<div className="row-span-2 flex justify-center items-center">
+				<CartesianView
+					width={500}
+					height={500}
+					data={TrainData}
+					network={hebbNetwork.CurrentNetwork}
+				/>
 			</div>
 
 			<div className="col-span-2">
