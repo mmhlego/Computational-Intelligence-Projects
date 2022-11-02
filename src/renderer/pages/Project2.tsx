@@ -4,6 +4,7 @@ import HebbNetwork from 'main/model/HebbNetwork';
 import { useState } from 'react';
 import InputGridView from 'renderer/view/InputGridView';
 import NetworkView from 'renderer/view/NetworkView';
+import LetterImageGenerator from 'renderer/view/LetterImageGenerator';
 
 export default function Project2() {
 	const [vals, setVals] = useState<number[]>(Array(5 * 5).fill(-1));
@@ -49,7 +50,20 @@ export default function Project2() {
 					</button>
 				</div>
 
-				<div className="row-span-1 border-2">TrainTable</div>
+				<div className="row-span-1 border-2">
+					<LetterImageGenerator
+						size={5}
+						textSize={{
+							min: 15,
+							max: 15,
+						}}
+						offsetX={0}
+						offsetY={0}
+						rotation={10}
+						step={1}
+						letter="x"
+					/>
+				</div>
 
 				{/* <div className="col-span-2">
 				<TrainDataTable
