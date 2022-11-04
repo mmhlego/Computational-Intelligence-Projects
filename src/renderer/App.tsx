@@ -2,7 +2,6 @@ import { useState } from 'react';
 import './App.css';
 import Sidebar from './components/Sidebar';
 import { ProjectInfo } from './interfaces';
-import Project1 from './pages/Project1';
 import ProjectPage from './pages/ProjectPage';
 
 export default function App() {
@@ -18,10 +17,12 @@ export default function App() {
 				onItemClicked={setProject}
 				selectedProject={CurrentProject}
 			/>
-			{CurrentProject ? ( // TODO
+			{CurrentProject ? (
 				<ProjectPage project={CurrentProject} />
 			) : (
-				<p>Home</p>
+				<div className="w-3/4 h-full flex justify-center items-center">
+					<p>Home</p>
+				</div>
 			)}
 		</div>
 	);

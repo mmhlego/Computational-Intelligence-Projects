@@ -71,15 +71,7 @@ export default class Neuron {
 	};
 
 	Draw = (p5: p5Types, x: number, y: number) => {
-		// CreateHoverText(
-		// 	p5,
-		// 	x,
-		// 	y,
-		// 	20,
-		// 	20,
-		// 	'#canvasHolder',
-		// 	JSON.stringify(this)
-		// );
+		// CreateHoverText(p5, x, y, 20, 20, '#canvasHolder', JSON.stringify(this));
 
 		p5.fill(255);
 		p5.stroke(255);

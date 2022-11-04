@@ -23,16 +23,6 @@ export default function LetterImageGenerator({
 	step,
 	letter,
 }: Props) {
-	// const size = 10;
-	// const textSize = {
-	// 	min: 20,
-	// 	max: 20,
-	// };
-	// const offsetX = 0;
-	// const offsetY = 0;
-	// const rotation = 5;
-	// const step = 2;
-
 	const ToJson = (pixels: number[]) => {
 		const vals: string[] = [];
 
@@ -63,34 +53,32 @@ export default function LetterImageGenerator({
 		p5.pixelDensity(1);
 		p5.createCanvas(size, size).parent(canvasParentRef);
 		p5.textAlign('center', 'center');
-		p5.background(255);
-
 		p5.textFont('Consolas');
+	};
+
+	const draw = (p5: p5Types) => {
+		p5.background(255);
 		p5.push();
 		p5.translate(size / 2, size / 2);
 		p5.translate(
 			p5.random(-offsetX, offsetX),
 			p5.random(-offsetY, offsetY)
 		);
-		p5.textSize(p5.random(textSize.min, textSize.max));
 		p5.rotate((p5.random(-rotation, rotation) * p5.PI) / 180);
-		// p5.textSize(60);
+		p5.textSize(p5.random(textSize.min, textSize.max));
 		p5.text(letter, 0, 0);
 		p5.pop();
-
 		p5.loadPixels();
-		console.log(p5.pixels);
-		ToJson(p5.pixels);
-	};
 
-	const mouseClicked = (p5: p5Types) => {
-		p5.saveCanvas('sample', 'png');
+		ToJson(p5.pixels);
+
+		p5.noLoop();
 	};
 
 	return (
 		<div className="relative h-[300px] w-[300px]">
 			<div id="canvasHolder" className="scale-[2] absolute">
-				<Sketch setup={setup} />
+				<Sketch setup={setup} draw={draw} />
 			</div>
 		</div>
 	);

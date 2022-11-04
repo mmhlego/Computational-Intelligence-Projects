@@ -35,8 +35,8 @@ export default function Project1() {
 		setHebbNetwork(new HebbNetwork(2, SymmetricalHardLimit));
 	};
 
-	const [x1, setX1] = useState(0);
-	const [x2, setX2] = useState(0);
+	const [x1, setX1] = useState(1);
+	const [x2, setX2] = useState(1);
 
 	const EvaluateNetwork = () => {
 		hebbNetwork.Evaluate([x1, x2]);
@@ -65,7 +65,7 @@ export default function Project1() {
 						max={1}
 						min={-1}
 						placeholder="x1"
-						className="w-1/4 bg-[#ffffff10] rounded-md text-center border-[#ffffff40] border-[1px] h-[30px]"
+						className="w-1/4 bg-[#ffffff10] rounded-md text-center border-[#ffffff40] border-[1px] h-[30px] outline-none"
 					/>
 
 					<input
@@ -75,7 +75,7 @@ export default function Project1() {
 						max={1}
 						min={-1}
 						placeholder="x2"
-						className="w-1/4 bg-[#ffffff10] rounded-md text-center border-[#ffffff40] border-[1px] h-[30px]"
+						className="w-1/4 bg-[#ffffff10] rounded-md text-center border-[#ffffff40] border-[1px] h-[30px] outline-none"
 					/>
 
 					<button
