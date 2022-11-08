@@ -2,6 +2,7 @@
 /* eslint-disable react/button-has-type */
 import NetworkData from 'main/model/NetworkData';
 import { useState } from 'react';
+import PrimaryButton from './PrimaryButton';
 
 interface Props {
 	TrainData: NetworkData[];
@@ -45,12 +46,11 @@ export default function TrainDataTable({
 						))}
 
 						<th>
-							<button
-								className="w-2/3 h-[30px] rounded-md text-sm bg-blue cursor-pointer hover:bg-transparent ease duration-200 border-lightBlue border-[1px]"
+							<PrimaryButton
+								text="Train All"
 								onClick={TrainAll}
-							>
-								Train All
-							</button>
+								className="w-2/3 max-h-[30px]"
+							/>
 						</th>
 					</tr>
 				</thead>
@@ -79,15 +79,14 @@ export default function TrainDataTable({
 							))}
 
 							<td>
-								<button
-									className="w-2/3 h-[30px] rounded-md text-sm bg-blue cursor-pointer hover:bg-transparent ease duration-200 border-lightBlue border-[1px]"
+								<PrimaryButton
+									text="Train"
 									onClick={() => {
 										setTrainedIndex(index);
 										TrainFunction(data);
 									}}
-								>
-									Train
-								</button>
+									className="w-2/3 max-h-[30px]"
+								/>
 							</td>
 						</tr>
 					))}

@@ -3,6 +3,8 @@ import { SymmetricalHardLimit } from 'main/model/ActivationFunctions';
 import HebbNetwork from 'main/model/HebbNetwork';
 import NetworkData from 'main/model/NetworkData';
 import { useState } from 'react';
+import InputField from 'renderer/components/InputField';
+import PrimaryButton from 'renderer/components/PrimaryButton';
 import TrainDataTable from 'renderer/components/TrainDataTable';
 import CartesianView from 'renderer/view/CartesianView';
 import NetworkView from 'renderer/view/NetworkView';
@@ -50,40 +52,34 @@ export default function Project1() {
 					width={500}
 					height={500}
 				/>
-				<button
-					className="w-full h-[30px] rounded-md text-sm bg-blue cursor-pointer hover:bg-transparent ease duration-200 border-lightBlue border-[1px]"
-					onClick={ResetNetwork}
-				>
-					Reset Network
-				</button>
+				<PrimaryButton text="Reset network" onClick={ResetNetwork} />
 
 				<div className="pt-5 flex justify-between">
-					<input
+					<InputField
+						type="number"
 						value={x1}
-						onChange={(v) => setX1(Number(v.target.value))}
-						type="number"
-						max={1}
-						min={-1}
+						setValue={(newVal: string) => setX1(Number(newVal))}
 						placeholder="x1"
-						className="w-1/4 bg-[#ffffff10] rounded-md text-center border-[#ffffff40] border-[1px] h-[30px] outline-none"
-					/>
-
-					<input
-						value={x2}
-						onChange={(v) => setX2(Number(v.target.value))}
-						type="number"
-						max={1}
+						max={+1}
 						min={-1}
-						placeholder="x2"
-						className="w-1/4 bg-[#ffffff10] rounded-md text-center border-[#ffffff40] border-[1px] h-[30px] outline-none"
+						className="w-1/4"
 					/>
 
-					<button
-						className="w-1/4 h-[30px] rounded-md text-sm bg-blue cursor-pointer hover:bg-transparent ease duration-200 border-lightBlue border-[1px]"
+					<InputField
+						type="number"
+						value={x2}
+						setValue={(newVal: string) => setX2(Number(newVal))}
+						placeholder="x1"
+						max={+1}
+						min={-1}
+						className="w-1/4"
+					/>
+
+					<PrimaryButton
+						text="Evaluate"
 						onClick={EvaluateNetwork}
-					>
-						Evaluate
-					</button>
+						className="w-1/4 max-h-[30px]"
+					/>
 				</div>
 			</div>
 
