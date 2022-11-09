@@ -6,7 +6,7 @@ import PrimaryButton from 'renderer/components/PrimaryButton';
 import InputGridView from 'renderer/view/InputGridView';
 import NetworkView from 'renderer/view/NetworkView';
 
-export default function Project2() {
+export default function HebbXo() {
 	const [vals, setVals] = useState<number[]>(Array(5 * 5).fill(-1));
 
 	const [hebbNetwork, setHebbNetwork] = useState(
@@ -22,17 +22,16 @@ export default function Project2() {
 	};
 
 	return (
-		<div className="grid grid-cols-2 gap-5 pb-6">
-			<div className="row-span-2">
+		<div className="flex flex-row gap-5 pb-6">
+			<div className="w-1/2">
 				<NetworkView
 					network={hebbNetwork.CurrentNetwork}
 					width={300}
 					height={1000}
 				/>
 			</div>
-
-			<div className="row-span-1">
-				<div className="row-span-1 aspect-square">
+			<div className="w-1/2">
+				<div className="aspect-square">
 					<p className="mb-2">Custom Input:</p>
 					<InputGridView
 						rows={5}
@@ -42,37 +41,31 @@ export default function Project2() {
 						vals={vals}
 						setVals={setVals}
 					/>
-
-					<PrimaryButton text="Evaluate" onClick={EvaluateNetwork} />
 				</div>
-
-				<div className="row-span-1 border-2">
-					{/* <LetterImageGenerator
-						size={5}
-						density={1}
-						textSize={{
-							min: 15,
-							max: 15,
-						}}
-						offsetX={0}
-						offsetY={0}
-						rotation={10}
-						letter="x"
-						count={5}
-						dataOutput={[+1]}
-						setAllData={(allData:)}
-					/> */}
-					Data
-				</div>
-
-				{/* <div className="col-span-2">
+				<PrimaryButton
+					text="Evaluate"
+					onClick={EvaluateNetwork}
+					className="mt-5"
+				/>
+				{/* </div>
+			<div className=""> */}
+				{/* <PrimaryButton
+					text="Train"
+					onClick={() => {
+						XoData.forEach((d) => {
+							hebbNetwork.Train(d);
+						});
+					}}
+				/> */}
+				Train Table
+			</div>
+			{/* <div className="col-span-2">
 				<TrainDataTable
-				TrainData={TrainData}
-				Labels={Labels}
-				TrainFunction={hebbNetwork.Train}
+					TrainData={XoData}
+					Labels={[]}
+					TrainFunction={hebbNetwork.Train}
 				/>
 			</div> */}
-			</div>
 		</div>
 	);
 }

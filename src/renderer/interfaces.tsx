@@ -1,6 +1,6 @@
 import DataGenerator from './pages/DataGenerator';
-import Project1 from './pages/Project1';
-import Project2 from './pages/Project2';
+import HebbAnd from './pages/Hebb_And';
+import HebbXo from './pages/Hebb_Xo';
 
 export type AlertTypes = 'warning' | 'success' | 'error' | 'info';
 // this interface indicates the props which is used inside the components
@@ -30,7 +30,7 @@ export const Projects: ProjectInfo[] = [
 		algorithm: 'Hebb Algorithm',
 		input: '2 Input neurons',
 		output: '1 Output neuron',
-		children: <Project1 />,
+		children: <HebbAnd />,
 	},
 	{
 		menuTitle: 'X/O Recognition - Hebb Network',
@@ -40,7 +40,7 @@ export const Projects: ProjectInfo[] = [
 		algorithm: 'Hebb Algorithm',
 		input: '25 Input neurons',
 		output: '1 Output neuron',
-		children: <Project2 />,
+		children: <HebbXo />,
 	},
 	// {
 	// 	menuTitle: 'AND Gate - Perceptron Network',
