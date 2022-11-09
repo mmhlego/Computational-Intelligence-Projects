@@ -2,9 +2,9 @@
 import { SymmetricalHardLimit } from 'main/model/ActivationFunctions';
 import HebbNetwork from 'main/model/HebbNetwork';
 import { useState } from 'react';
+import PrimaryButton from 'renderer/components/PrimaryButton';
 import InputGridView from 'renderer/view/InputGridView';
 import NetworkView from 'renderer/view/NetworkView';
-import LetterImageGenerator from 'renderer/view/LetterImageGenerator';
 
 export default function Project2() {
 	const [vals, setVals] = useState<number[]>(Array(5 * 5).fill(-1));
@@ -42,17 +42,14 @@ export default function Project2() {
 						vals={vals}
 						setVals={setVals}
 					/>
-					<button
-						className="w-full h-[35px] rounded-md text-sm bg-blue cursor-pointer hover:bg-transparent duration-200 border-lightBlue border-[1px] my-4"
-						onClick={EvaluateNetwork}
-					>
-						Evaluate
-					</button>
+
+					<PrimaryButton text="Evaluate" onClick={EvaluateNetwork} />
 				</div>
 
 				<div className="row-span-1 border-2">
-					<LetterImageGenerator
+					{/* <LetterImageGenerator
 						size={5}
+						density={1}
 						textSize={{
 							min: 15,
 							max: 15,
@@ -60,9 +57,12 @@ export default function Project2() {
 						offsetX={0}
 						offsetY={0}
 						rotation={10}
-						step={1}
 						letter="x"
-					/>
+						count={5}
+						dataOutput={[+1]}
+						setAllData={(allData:)}
+					/> */}
+					Data
 				</div>
 
 				{/* <div className="col-span-2">

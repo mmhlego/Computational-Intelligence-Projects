@@ -56,6 +56,7 @@ export default function Project1() {
 
 				<div className="pt-5 flex justify-between">
 					<InputField
+						label="x1"
 						type="number"
 						value={x1}
 						setValue={(newVal: string) => setX1(Number(newVal))}
@@ -66,6 +67,7 @@ export default function Project1() {
 					/>
 
 					<InputField
+						label="x2"
 						type="number"
 						value={x2}
 						setValue={(newVal: string) => setX2(Number(newVal))}

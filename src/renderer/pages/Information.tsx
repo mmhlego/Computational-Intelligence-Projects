@@ -1,4 +1,5 @@
 /* eslint-disable react/button-has-type */
+import PrimaryButton from 'renderer/components/PrimaryButton';
 import { ProjectInfo } from 'renderer/interfaces';
 
 interface Props {
@@ -9,7 +10,7 @@ interface Props {
 export default function Information({ project, onClick }: Props) {
 	return (
 		<div className="w-3/4 flex flex-col justify-center gap-6 items-center">
-			<h1 className="text-4xl font-bold text-center">{project.title}</h1>
+			<h1 className="text-4xl">{project.title}</h1>
 			<p className="text-center">{project.description}</p>
 
 			<div className="grid grid-rows-1 grid-flow-col gap-4 text-center">
@@ -32,9 +33,11 @@ export default function Information({ project, onClick }: Props) {
 				)}
 			</div>
 
-			<button className="w-28 h-10 rounded-md bg-blue" onClick={onClick}>
-				Begin
-			</button>
+			<PrimaryButton
+				text="Begin"
+				onClick={onClick}
+				className="w-28 h-10 text-[16px] border-blue"
+			/>
 		</div>
 	);
 }

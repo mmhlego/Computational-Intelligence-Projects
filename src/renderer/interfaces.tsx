@@ -1,3 +1,4 @@
+import DataGenerator from './pages/DataGenerator';
 import Project1 from './pages/Project1';
 import Project2 from './pages/Project2';
 
@@ -14,7 +15,7 @@ export interface ProjectInfo {
 	menuTitle: string;
 	title: string;
 	description: string;
-	algorithm: string;
+	algorithm?: string;
 	input?: string;
 	output?: string;
 	children: React.ReactNode;
@@ -69,4 +70,11 @@ export const Projects: ProjectInfo[] = [
 	// 	output: '2 Output nodes',
 	// 	children: <p>Project 5</p>,
 	// },
+	{
+		menuTitle: 'Data Generator',
+		title: 'Neural Network Data Generator',
+		description:
+			'A simple tool to generate custom data for your neural network.', // TODO Complete the description
+		children: <DataGenerator />,
+	},
 ];
