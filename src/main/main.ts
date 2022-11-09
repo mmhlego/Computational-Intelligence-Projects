@@ -15,16 +15,6 @@ import path from 'path';
 import MenuBuilder from './menu';
 import { resolveHtmlPath } from './util';
 
-// import write from './serialController';
-
-// GetMeasurements('WeightScale', '34:14:b5:a0:1d:03')
-//   .then((measurement) => {
-//     console.log('\t\tresult:', measurement);
-//   })
-//   .catch((measurement) => {
-//     console.log('\t\terr:', measurement);
-//   });
-
 class AppUpdater {
 	constructor() {
 		log.transports.file.level = 'info';
@@ -40,6 +30,10 @@ ipcMain.on('ipc-example', async (event, arg) => {
 	// write();
 	console.log(msgTemplate(arg));
 	event.reply('ipc-example', msgTemplate('pong'));
+});
+
+ipcMain.handle('sample', async (evernt, args: string[]) => {
+	args.forEach((item) => console.log(JSON.stringify(item, null, 4)));
 });
 
 // export function sendMessage() {
