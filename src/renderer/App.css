@@ -32,3 +32,29 @@ body {
 	background-color: #282c34;
 	border-radius: 5px;
 }
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+	font-weight: bold;
+	text-align: center;
+	font-size: medium;
+}
+
+h1 {
+	font-size: xx-large;
+}
+
+h2 {
+	font-size: x-large;
+}
+
+h3 {
+	font-size: larger;
+}
+
+h4 {
+	font-size: large;
+}

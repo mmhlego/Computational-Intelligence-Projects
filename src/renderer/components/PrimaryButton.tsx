@@ -10,7 +10,7 @@ interface Props {
 export default function PrimaryButton({ text, onClick, className }: Props) {
 	return (
 		<button
-			className={`w-full h-[35px] rounded-md text-sm bg-blue cursor-pointer hover:bg-transparent ease duration-200 border-lightBlue border-[1px] ${className}`}
+			className={`w-full h-[35px] rounded-md text-sm bg-blue cursor-pointer hover:bg-[#29A9E120] ease duration-200 border-lightBlue border-[1px] ${className}`}
 			onClick={onClick}
 		>
 			{text}

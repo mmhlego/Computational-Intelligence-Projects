@@ -1,6 +1,7 @@
 /* eslint-disable react/require-default-props */
 
 interface Props {
+	label?: string;
 	type: string;
 	value: number | string;
 	setValue: (newVal: string) => void;
@@ -11,6 +12,7 @@ interface Props {
 }
 
 export default function InputField({
+	label,
 	type,
 	value,
 	setValue,
@@ -20,7 +22,10 @@ export default function InputField({
 	min,
 }: Props) {
 	return (
-		<>
+		<div
+			className={`flex items-center h-[30px] bg-[#333741] rounded-md text-center border-[#626977] border-[1px] ${className}`}
+		>
+			{label && <p className="min-w-fit w-1/2 mx-2">{`${label}`}</p>}
 			<input
 				value={value}
 				onChange={(v) => setValue(v.target.value)}
@@ -28,8 +33,8 @@ export default function InputField({
 				max={max}
 				min={min}
 				placeholder={placeholder}
-				className={`w-full bg-[#ffffff10] rounded-md text-center border-[#ffffff40] border-[1px] h-[30px] outline-none ${className}`}
+				className="w-full h-full bg-[#40444D] rounded-md text-center outline-none border-[#29A9E1] focus:border-[0.5px]"
 			/>
-		</>
+		</div>
 	);
 }
