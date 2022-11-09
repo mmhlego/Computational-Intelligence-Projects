@@ -13,7 +13,6 @@ export default function Table({
 	SelectedIndexes,
 	className,
 }: Props) {
-	console.log(AllData[0]);
 	return (
 		<div
 			className={`overflow-hidden rounded-md border-[#ffffff20] border-[1px] ${className}`}

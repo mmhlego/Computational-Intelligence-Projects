@@ -14,7 +14,7 @@ export default function TrainDataTable({
 	Labels,
 	TrainFunction,
 }: Props) {
-	const [trainedIndexes, setTrainedIndexes] = useState(-1);
+	const [trainedIndex, setTrainedIndex] = useState(-1);
 
 	// eslint-disable-next-line promise/param-names
 	const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
@@ -22,7 +22,7 @@ export default function TrainDataTable({
 	const TrainAll = async () => {
 		for (let i = 0; i < TrainData.length; i += 1) {
 			TrainFunction(TrainData[i]);
-			setTrainedIndexes(i);
+			setTrainedIndex(i);
 
 			// eslint-disable-next-line no-await-in-loop
 			await sleep(200);
@@ -36,7 +36,7 @@ export default function TrainDataTable({
 			<PrimaryButton
 				text="Train"
 				onClick={() => {
-					setTrainedIndexes(index);
+					setTrainedIndex(index);
 					TrainFunction(data);
 				}}
 				className="w-2/3 max-h-[30px]"
@@ -56,7 +56,7 @@ export default function TrainDataTable({
 					/>,
 				]}
 				AllData={TrainTable}
-				SelectedIndexes={[trainedIndexes]}
+				SelectedIndexes={[trainedIndex]}
 			/>
 		</>
 	);
