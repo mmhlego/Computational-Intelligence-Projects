@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import { createContext, useState } from 'react';
 import { AlertInterface } from 'renderer/interfaces';
 

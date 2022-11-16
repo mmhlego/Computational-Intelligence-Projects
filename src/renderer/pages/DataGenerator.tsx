@@ -186,7 +186,7 @@ export default function DataGenerator() {
 					/>
 				</div>
 
-				<div className="w-1/2 aspect-square rounded-md bg-[#ffffff10] overflow-hidden">
+				<div className="w-1/4 aspect-square rounded-md bg-[#ffffff10] overflow-hidden">
 					{enabled === true && (
 						<LetterImageGenerator
 							size={size}
