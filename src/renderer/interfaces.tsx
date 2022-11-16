@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import DataGenerator from './pages/DataGenerator';
 import HebbAnd from './pages/Hebb_And';
 import HebbXo from './pages/Hebb_Xo';
@@ -6,9 +7,8 @@ export type AlertTypes = 'warning' | 'success' | 'error' | 'info';
 // this interface indicates the props which is used inside the components
 export interface AlertInterface {
 	type: AlertTypes;
-	title: string;
 	description: string;
-	onClick: () => void;
+	onClick?: () => void;
 }
 
 export interface ProjectInfo {
