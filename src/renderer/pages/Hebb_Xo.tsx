@@ -1,8 +1,10 @@
+/* eslint-disable import/no-cycle */
 /* eslint-disable react/button-has-type */
 import { XoData } from 'main/data/Xo_1';
 import { SymmetricalHardLimit } from 'main/model/ActivationFunctions';
 import HebbNetwork from 'main/model/HebbNetwork';
 import { useState } from 'react';
+import CollapsiblePanel from 'renderer/components/CollapsiblePanel';
 import PrimaryButton from 'renderer/components/PrimaryButton';
 import Table from 'renderer/components/Table';
 import InputGridView from 'renderer/view/InputGridView';
@@ -43,11 +45,11 @@ export default function HebbXo() {
 			<div className="w-1/2">
 				<NetworkView
 					network={hebbNetwork.CurrentNetwork}
-					width={500}
+					width={400}
 					height={1200}
 				/>
 			</div>
-			<div className="w-1/2">
+			<div className="w-3/5">
 				<div className="aspect-square">
 					<p className="mb-2">Custom Input:</p>
 					<InputGridView
@@ -75,30 +77,32 @@ export default function HebbXo() {
 					className="mb-5"
 				/>
 
-				<Table
-					Labels={[
-						'Input',
-						'Output',
-						<PrimaryButton
-							text="Train All"
-							onClick={TrainAll}
-							className="max-h-[30px]"
-						/>,
-					]}
-					AllData={XoData.map((data, index) => [
-						data.Input,
-						data.Output[0] === -1 ? 'O' : 'X',
-						<PrimaryButton
-							text="Train"
-							onClick={() => {
-								setTrainedIndex(index);
-								hebbNetwork.Train(data);
-							}}
-							className="max-h-[30px]"
-						/>,
-					])}
-					SelectedIndexes={[trainedIndex]}
-				/>
+				<CollapsiblePanel Title="Train Data Table" Closed>
+					<Table
+						Labels={[
+							'Input',
+							'Output',
+							<PrimaryButton
+								text="Train All"
+								onClick={TrainAll}
+								className="max-h-[30px] w-fit"
+							/>,
+						]}
+						AllData={XoData.map((data, index) => [
+							data.Input,
+							data.Output[0] === -1 ? 'O' : 'X',
+							<PrimaryButton
+								text="Train"
+								onClick={() => {
+									setTrainedIndex(index);
+									hebbNetwork.Train(data);
+								}}
+								className="max-h-[30px]"
+							/>,
+						])}
+						SelectedIndexes={[trainedIndex]}
+					/>
+				</CollapsiblePanel>
 			</div>
 		</div>
 	);

@@ -3,6 +3,7 @@ import { SymmetricalHardLimit } from 'main/model/ActivationFunctions';
 import HebbNetwork from 'main/model/HebbNetwork';
 import NetworkData from 'main/model/NetworkData';
 import { useState } from 'react';
+import CollapsiblePanel from 'renderer/components/CollapsiblePanel';
 import InputField from 'renderer/components/InputField';
 import PrimaryButton from 'renderer/components/PrimaryButton';
 import TrainDataTable from 'renderer/components/TrainDataTable';
@@ -95,11 +96,13 @@ export default function HebbAnd() {
 			</div>
 
 			<div className="col-span-2">
-				<TrainDataTable
-					TrainData={TrainData}
-					Labels={Labels}
-					TrainFunction={hebbNetwork.Train}
-				/>
+				<CollapsiblePanel Title="Train Data Table" Closed>
+					<TrainDataTable
+						TrainData={TrainData}
+						Labels={Labels}
+						TrainFunction={hebbNetwork.Train}
+					/>
+				</CollapsiblePanel>
 			</div>
 		</div>
 	);

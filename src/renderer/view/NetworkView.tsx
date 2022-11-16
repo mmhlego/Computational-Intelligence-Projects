@@ -1,9 +1,13 @@
+/* eslint-disable import/no-cycle */
+/* eslint-disable react/button-has-type */
 import { HardLimit } from 'main/model/ActivationFunctions';
 import Edge from 'main/model/Edge';
 import Network from 'main/model/Network';
 import Neuron from 'main/model/Neuron';
 import p5Types from 'p5';
+import { useContext } from 'react';
 import Sketch from 'react-p5';
+import { MainContext } from 'renderer/MainContext';
 
 interface Props {
 	network: Network;
@@ -117,8 +121,24 @@ export default function NetworkView({ network, width, height }: Props) {
 		drawNodes(p5);
 	};
 
+	const ctx = useContext(MainContext);
+
 	return (
 		<div id="canvasHolder" className="relative">
+			<button
+				onClick={() => {
+					navigator.clipboard.writeText(
+						JSON.stringify(network, null, 4)
+					);
+					ctx.alertHandler({
+						description: 'Network copied to clipboard',
+						type: 'success',
+					});
+				}}
+				className="absolute right-1.5 top-1.5 cursor-pointer text-xs bg-[#40444D] py-1 px-3 rounded-md duration-300 hover:bg-[#555a66]"
+			>
+				Export
+			</button>
 			<Sketch setup={setup} draw={draw} />
 		</div>
 	);
