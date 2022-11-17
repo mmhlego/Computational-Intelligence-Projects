@@ -17,11 +17,13 @@ export default function App() {
 	const ctx = useContext(MainContext);
 
 	useEffect(() => {
-		setAlertVisible(true);
+		if (ctx.alert) {
+			setAlertVisible(true);
 
-		setTimeout(() => {
-			setAlertVisible(false);
-		}, 5000);
+			setTimeout(() => {
+				setAlertVisible(false);
+			}, 5000);
+		}
 	}, [ctx.alert]);
 
 	return (

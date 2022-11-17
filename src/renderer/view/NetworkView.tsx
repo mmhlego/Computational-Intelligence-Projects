@@ -135,7 +135,7 @@ export default function NetworkView({ network, width, height }: Props) {
 						type: 'success',
 					});
 				}}
-				className="absolute right-1.5 top-1.5 cursor-pointer text-xs bg-[#40444D] py-1 px-3 rounded-md duration-300 hover:bg-[#555a66]"
+				className="absolute right-1.5 top-1.5 cursor-pointer text-xs bg-[#40444D] py-1 px-3 rounded-md duration-300 hover:bg-[#555a66] outline-none border-[#4a4e59] border-[1px]"
 			>
 				Export
 			</button>

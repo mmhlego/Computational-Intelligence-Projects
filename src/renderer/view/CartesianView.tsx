@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 import Network from 'main/model/Network';
 import NetworkData from 'main/model/NetworkData';
 import p5Types from 'p5';
@@ -10,9 +11,16 @@ interface Props {
 	height: number;
 	data: NetworkData[];
 	network: Network;
+	theta?: number;
 }
 
-export default function CartesianView({ width, height, data, network }: Props) {
+export default function CartesianView({
+	width,
+	height,
+	data,
+	network,
+	theta,
+}: Props) {
 	// y = slope * x + cross
 	const [slope, setSlope] = useState(Infinity);
 	const [cross, setCross] = useState(Infinity);
@@ -101,8 +109,23 @@ export default function CartesianView({ width, height, data, network }: Props) {
 			);
 		});
 
-		if (cross !== Infinity)
+		if (cross !== Infinity) {
 			mP5.DrawChart(slope, cross, p5.color(50, 250, 100));
+
+			if (theta) {
+				const w2 = network.Neurons[1][0].ConnectedEdges[2].Weight;
+				mP5.DrawChart(
+					slope,
+					cross + theta / w2,
+					p5.color(200, 150, 80)
+				);
+				mP5.DrawChart(
+					slope,
+					cross - theta / w2,
+					p5.color(200, 150, 80)
+				);
+			}
+		}
 
 		console.log(slope, cross);
 	};

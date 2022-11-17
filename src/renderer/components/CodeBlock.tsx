@@ -13,7 +13,7 @@ export default function CodeBlock({ language, text }: Props) {
 				onClick={() => {
 					navigator.clipboard.writeText(text);
 				}}
-				className="absolute right-1.5 top-1.5 cursor-pointer text-sm bg-[#40444D] py-1 px-3 rounded-md duration-300 hover:bg-[#555a66]"
+				className="absolute right-1.5 top-1.5 cursor-pointer text-sm bg-[#40444D] py-1 px-3 rounded-md duration-300 hover:bg-[#555a66] outline-none border-[#4a4e59] border-[1px]"
 			>
 				Copy
 			</button>
