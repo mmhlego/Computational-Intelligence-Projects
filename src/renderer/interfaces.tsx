@@ -2,6 +2,7 @@
 import DataGenerator from './pages/DataGenerator';
 import HebbAnd from './pages/Hebb_And';
 import HebbXo from './pages/Hebb_Xo';
+import PerceptronAnd from './pages/Perceptron_And';
 
 export type AlertTypes = 'warning' | 'success' | 'error' | 'info';
 // this interface indicates the props which is used inside the components
@@ -42,16 +43,16 @@ export const Projects: ProjectInfo[] = [
 		output: '1 Output neuron',
 		children: <HebbXo />,
 	},
-	// {
-	// 	menuTitle: 'AND Gate - Perceptron Network',
-	// 	title: 'AND Gate with Perceptron network',
-	// 	description:
-	// 		'Simulation of the training process of AND gate neural network, implemented with perceptron network.', // TODO Complete the description
-	// 	algorithm: 'Perceptron Algorithm',
-	// 	input: '2 Input nodes',
-	// 	output: '1 Output node',
-	// 	children: <p>Project 3</p>,
-	// },
+	{
+		menuTitle: 'AND Gate - Perceptron Network',
+		title: 'AND Gate with Perceptron network',
+		description:
+			'Simulation of the training process of AND gate neural network, implemented with perceptron network.', // TODO Complete the description
+		algorithm: 'Perceptron Algorithm',
+		input: '2 Input nodes',
+		output: '1 Output node',
+		children: <PerceptronAnd />,
+	},
 	// {
 	// 	menuTitle: 'X/O Recognition - Perceptron Network - Single Output',
 	// 	title: 'X/O Character recognition with Perceptron network',
