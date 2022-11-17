@@ -1,6 +1,6 @@
 /* eslint-disable import/no-cycle */
 /* eslint-disable react/button-has-type */
-import { XoData } from 'main/data/Xo_1';
+import { XoData } from 'main/data/Xo';
 import { SymmetricalHardLimit } from 'main/model/ActivationFunctions';
 import HebbNetwork from 'main/model/HebbNetwork';
 import { useState } from 'react';

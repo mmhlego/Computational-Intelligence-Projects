@@ -1,4 +1,6 @@
+/* eslint-disable import/no-cycle */
 /* eslint-disable react/button-has-type */
+import { AndDataBipolar } from 'main/data/And';
 import { SymmetricalHardLimit } from 'main/model/ActivationFunctions';
 import HebbNetwork from 'main/model/HebbNetwork';
 import NetworkData from 'main/model/NetworkData';
@@ -15,24 +17,7 @@ export default function HebbAnd() {
 		new HebbNetwork(2, SymmetricalHardLimit)
 	);
 	const Labels: string[] = ['x1', 'x2', 'y'];
-	const TrainData: NetworkData[] = [
-		{
-			Input: [1, 1],
-			Output: [1],
-		},
-		{
-			Input: [1, -1],
-			Output: [-1],
-		},
-		{
-			Input: [-1, 1],
-			Output: [-1],
-		},
-		{
-			Input: [-1, -1],
-			Output: [-1],
-		},
-	];
+	const TrainData: NetworkData[] = AndDataBipolar;
 
 	const ResetNetwork = () => {
 		setHebbNetwork(new HebbNetwork(2, SymmetricalHardLimit));
