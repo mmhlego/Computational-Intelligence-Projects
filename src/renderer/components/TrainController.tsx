@@ -12,6 +12,7 @@ interface Props {
 	TrainData: NetworkData[];
 	Network: NetworkInterface;
 	Reset: boolean;
+	DelayBetweenEpochs?: boolean;
 	className?: string;
 }
 
@@ -20,6 +21,7 @@ export default function TrainController({
 	TrainData,
 	Network,
 	Reset,
+	DelayBetweenEpochs = true,
 	className,
 }: Props) {
 	const [currentEpoch, setCurrentEpoch] = useState(0);
@@ -42,7 +44,7 @@ export default function TrainController({
 	// eslint-disable-next-line promise/param-names
 	const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
-	const TrainAll = () => {
+	const TrainAll = async () => {
 		setStarted(true);
 
 		for (let epoch = currentEpoch + 1; epoch <= maxEpochs; epoch += 1) {
@@ -84,6 +86,11 @@ export default function TrainController({
 
 			if (accuracy / 100 >= minAccuracy) {
 				break;
+			}
+
+			if (DelayBetweenEpochs) {
+				// eslint-disable-next-line no-await-in-loop
+				await sleep(200);
 			}
 		}
 
