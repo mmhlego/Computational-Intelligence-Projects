@@ -1,11 +1,12 @@
 /* eslint-disable import/no-cycle */
-import { AndDataBinary, AndDataBipolar } from 'main/data/And';
+import { AndDataBinary } from 'main/data/And';
 import NetworkData from 'main/model/NetworkData';
 import PerceptronNetwork from 'main/model/PerceptronNetwork';
 import { useEffect, useState } from 'react';
 import CollapsiblePanel from 'renderer/components/CollapsiblePanel';
 import InputField from 'renderer/components/InputField';
 import PrimaryButton from 'renderer/components/PrimaryButton';
+import Toggle from 'renderer/components/Toggle';
 import TrainDataTable from 'renderer/components/TrainDataTable';
 import CartesianView from 'renderer/view/CartesianView';
 import NetworkView from 'renderer/view/NetworkView';
@@ -15,13 +16,16 @@ export default function PerceptronAnd() {
 	const [theta, setTheta] = useState(0.5);
 	const Labels: string[] = ['x1', 'x2', 'y'];
 	const TrainData: NetworkData[] = AndDataBinary;
+	const [edgeValue, setEdgeValue] = useState<0 | 'random'>(0);
 
 	const [perceptronNetwork, setPerceptronNetwork] = useState(
-		new PerceptronNetwork(2, 1, learningRate, theta)
+		new PerceptronNetwork(2, 1, learningRate, theta, 0)
 	);
 
 	const ResetNetwork = () => {
-		setPerceptronNetwork(new PerceptronNetwork(2, 1, learningRate, theta));
+		setPerceptronNetwork(
+			new PerceptronNetwork(2, 1, learningRate, theta, edgeValue)
+		);
 	};
 
 	const [x1, setX1] = useState(1);
@@ -77,7 +81,7 @@ export default function PerceptronAnd() {
 					/>
 				</div>
 
-				<div className="pt-5 flex justify-evenly">
+				<div className="pt-5 flex justify-between">
 					<InputField
 						label="alpha"
 						type="number"
@@ -88,7 +92,7 @@ export default function PerceptronAnd() {
 						placeholder="x1"
 						max={+1}
 						min={0}
-						className="w-1/3"
+						className="w-1/4"
 					/>
 
 					<InputField
@@ -99,7 +103,15 @@ export default function PerceptronAnd() {
 						placeholder="x1"
 						max={+10}
 						min={0}
-						className="w-1/3"
+						className="w-1/4"
+					/>
+
+					<Toggle
+						LeftVal="Zero"
+						RightVal="Random"
+						onLeft={() => setEdgeValue(0)}
+						onRight={() => setEdgeValue('random')}
+						className="w-1/4"
 					/>
 				</div>
 			</div>
@@ -116,6 +128,14 @@ export default function PerceptronAnd() {
 
 			<div className="col-span-2">
 				<CollapsiblePanel Title="Train Data Table" Closed>
+					<div className="w-full">
+						{/* Max epochs */}
+						{/* Max value change */}
+						{/* Accuracy */}
+						{/* Max Time */}
+						{/* Start Button */}
+					</div>
+
 					<TrainDataTable
 						TrainData={TrainData}
 						Labels={Labels}

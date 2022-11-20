@@ -3,6 +3,8 @@ import DataGenerator from './pages/DataGenerator';
 import HebbAnd from './pages/Hebb_And';
 import HebbXo from './pages/Hebb_Xo';
 import PerceptronAnd from './pages/Perceptron_And';
+import PerceptronXo from './pages/Perceptron_Xo';
+import PerceptronXo2 from './pages/Perceptron_Xo_D';
 
 export type AlertTypes = 'warning' | 'success' | 'error' | 'info';
 // this interface indicates the props which is used inside the components
@@ -53,24 +55,24 @@ export const Projects: ProjectInfo[] = [
 		output: '1 Output node',
 		children: <PerceptronAnd />,
 	},
-	// {
-	// 	menuTitle: 'X/O Recognition - Perceptron Network - Single Output',
-	// 	title: 'X/O Character recognition with Perceptron network',
-	// 	description: '---', // TODO Complete the description
-	// 	algorithm: 'Perceptron Algorithm',
-	// 	input: '25 Input nodes',
-	// 	output: '1 Output node',
-	// 	children: <p>Project 4</p>,
-	// },
-	// {
-	// 	menuTitle: 'X/O Recognition - Perceptron Network - Dual Output',
-	// 	title: 'X/O Character recognition with Perceptron network',
-	// 	description: '---', // TODO Complete the description
-	// 	algorithm: 'Perceptron Algorithm',
-	// 	input: '25 Input nodes',
-	// 	output: '2 Output nodes',
-	// 	children: <p>Project 5</p>,
-	// },
+	{
+		menuTitle: 'X/O Recognition - Perceptron Network - Single Output',
+		title: 'X/O Character recognition with Perceptron network',
+		description: '---', // TODO Complete the description
+		algorithm: 'Perceptron Algorithm',
+		input: '25 Input nodes',
+		output: '1 Output node',
+		children: <PerceptronXo />,
+	},
+	{
+		menuTitle: 'X/O Recognition - Perceptron Network - Dual Output',
+		title: 'X/O Character recognition with Perceptron network',
+		description: '---', // TODO Complete the description
+		algorithm: 'Perceptron Algorithm',
+		input: '25 Input nodes',
+		output: '2 Output nodes',
+		children: <PerceptronXo2 />,
+	},
 	{
 		menuTitle: 'Data Generator',
 		title: 'Neural Network Data Generator',
