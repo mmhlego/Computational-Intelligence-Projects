@@ -3,6 +3,6 @@ import NetworkData from './NetworkData';
 
 export default interface NetworkInterface {
 	CurrentNetwork: Network;
-	Train: (data: NetworkData) => void;
+	Train: (data: NetworkData) => number; // Maximum value of weight change (Δw)
 	Evaluate: (data: number[]) => void;
 }

@@ -2,8 +2,12 @@ export default class Edge {
 	// Weight of the current edge
 	public Weight: number;
 
-	constructor(defaultWeight = 0) {
-		this.Weight = defaultWeight;
+	constructor(defaultWeight: number | 'random' = 0) {
+		if (defaultWeight === 'random') {
+			this.Weight = Math.random() * 2 - 1;
+		} else {
+			this.Weight = defaultWeight;
+		}
 	}
 
 	public SetWeight = (newWeight: number) => {

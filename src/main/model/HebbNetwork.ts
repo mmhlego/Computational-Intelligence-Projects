@@ -15,7 +15,7 @@ export default class HebbNetwork implements NetworkInterface {
 	}
 
 	Train = (data: NetworkData) => {
-		console.log('Training with', data);
+		let MaxChanged = 0;
 
 		for (let i = 0; i < data.Input.length; i += 1) {
 			this.CurrentNetwork.Neurons[0][i].SetValue(data.Input[i]);
@@ -28,11 +28,19 @@ export default class HebbNetwork implements NetworkInterface {
 		this.CurrentNetwork.Neurons[1][0].ConnectedEdges[0].AddWeight(
 			data.Output[0]
 		);
+		MaxChanged = Math.max(MaxChanged, Math.abs(data.Output[0]));
+
 		for (let i = 0; i < inputNeurons; i += 1) {
 			this.CurrentNetwork.Neurons[1][0].ConnectedEdges[i + 1].AddWeight(
 				data.Input[i] * data.Output[0]
 			);
+			MaxChanged = Math.max(
+				MaxChanged,
+				Math.abs(data.Input[i] * data.Output[0])
+			);
 		}
+
+		return MaxChanged;
 	};
 
 	Evaluate = (data: number[]) => {

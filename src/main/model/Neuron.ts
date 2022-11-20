@@ -18,7 +18,8 @@ export default class Neuron {
 	// Constructor
 	constructor(
 		activationFunction: ActivationFunctionType,
-		connectedNeurons = 0
+		connectedNeurons = 0,
+		defaultEdgeValue: number | 'random' = 0
 	) {
 		if (connectedNeurons < 0)
 			throw new Error(
@@ -29,7 +30,7 @@ export default class Neuron {
 
 		if (connectedNeurons > 0) {
 			for (let i = 0; i < connectedNeurons + 1; i += 1) {
-				this.ConnectedEdges.push(new Edge());
+				this.ConnectedEdges.push(new Edge(defaultEdgeValue));
 			}
 		}
 	}

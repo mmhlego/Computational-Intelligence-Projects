@@ -10,7 +10,8 @@ export default class Network {
 	constructor(
 		neurons: number[],
 		hiddenActivationFunction: ActivationFunctionType,
-		outputActivationFunction: ActivationFunctionType
+		outputActivationFunction: ActivationFunctionType,
+		defaultEdgeValue: number | 'random' = 0
 	) {
 		this.Size = neurons.length;
 
@@ -32,7 +33,8 @@ export default class Network {
 						i === this.Size - 1
 							? outputActivationFunction
 							: hiddenActivationFunction,
-						pastLayerNodes
+						pastLayerNodes,
+						defaultEdgeValue
 					)
 				);
 			}
