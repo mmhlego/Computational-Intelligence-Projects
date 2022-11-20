@@ -4,6 +4,7 @@ import AlertPopup from './components/AlertPopup';
 import Sidebar from './components/Sidebar';
 import { ProjectInfo } from './interfaces';
 import { MainContext } from './MainContext';
+import Home from './pages/Home';
 import ProjectPage from './pages/ProjectPage';
 
 export default function App() {
@@ -42,7 +43,7 @@ export default function App() {
 				<ProjectPage project={CurrentProject} />
 			) : (
 				<div className="w-3/4 h-full flex justify-center items-center">
-					<p>Home</p>
+					<Home />
 				</div>
 			)}
 		</div>

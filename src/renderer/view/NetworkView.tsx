@@ -38,17 +38,23 @@ export default function NetworkView({ network, width, height }: Props) {
 		p5.stroke(51);
 		p5.strokeWeight(2);
 		p5.textSize(14);
-		p5.text(edge.Weight, x3, y3);
+		p5.text(edge.Weight.toFixed(2), x3, y3);
 	};
 
 	const drawEdges = (p5: p5Types) => {
 		for (let i = 0; i < network.Size; i += 1) {
 			const neurons = network.Neurons[i].length;
-			const layerHeight = height / neurons;
+			const layerHeight =
+				i !== network.Size - 1
+					? height / (neurons + 1)
+					: height / neurons;
 
 			for (let j = 0; j < neurons; j += 1) {
 				const x1 = i * layerWidth + 40;
-				const y1 = j * layerHeight + layerHeight / 2;
+				const y1 =
+					j * layerHeight +
+					layerHeight / 2 +
+					(i !== network.Size - 1 ? layerHeight : 0);
 
 				if (i > 0) {
 					const x2 = (i - 1) * layerWidth + 40;
