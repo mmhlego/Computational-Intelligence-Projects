@@ -8,17 +8,19 @@ interface Props {
 
 export default function Sidebar({ selectedProject, onItemClicked }: Props) {
 	return (
-		<div className="w-1/4 h-screen shadow-white-md bg-[#282c34] box-border p-2">
-			{Projects.map((item) => (
-				<MenuItem
-					key={item.menuTitle}
-					selected={selectedProject === item}
-					project={item}
-					onClick={() => {
-						onItemClicked(item);
-					}}
-				/>
-			))}
+		<div className="w-1/4 h-screen p-2">
+			<div className="w-full h-full rounded-xl border-[1px] border-[#ffffff18] bg-[#282c34] box-border p-1.5 shadow-[#ffffff10] shadow-md">
+				{Projects.map((item) => (
+					<MenuItem
+						key={item.menuTitle}
+						selected={selectedProject === item}
+						project={item}
+						onClick={() => {
+							onItemClicked(item);
+						}}
+					/>
+				))}
+			</div>
 		</div>
 	);
 }

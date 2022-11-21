@@ -47,6 +47,7 @@ export default function HebbXo() {
 					network={hebbNetwork.CurrentNetwork}
 					width={400}
 					height={1200}
+					floatingPoints={0}
 				/>
 			</div>
 			<div className="w-3/5">
@@ -85,11 +86,11 @@ export default function HebbXo() {
 							<PrimaryButton
 								text="Train All"
 								onClick={TrainAll}
-								className="max-h-[30px] w-fit"
+								className="max-h-[30px]"
 							/>,
 						]}
 						AllData={XoData.map((data, index) => [
-							data.Input,
+							`Array(${data.Input.length})`,
 							data.Output[0] === -1 ? 'O' : 'X',
 							<PrimaryButton
 								text="Train"

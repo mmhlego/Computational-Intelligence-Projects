@@ -172,9 +172,8 @@ export default function TrainController({
 
 			<Table
 				Labels={['Input', 'Output']}
-				AllData={TrainData.map((data, index) => [
-					// data.Input,
-					'Array(25)',
+				AllData={TrainData.map((data) => [
+					`Array(${data.Input.length})`,
 					data.Output.join(', '),
 				])}
 				SelectedIndexes={[trainedIndex]}

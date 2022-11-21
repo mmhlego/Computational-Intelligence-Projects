@@ -131,7 +131,10 @@ export default function CartesianView({
 	};
 
 	return (
-		<div id="cartesianHolder" className="relative">
+		<div
+			id="cartesianHolder"
+			className="relative bg-[#ffffff05] shadow-md p-2 box-border rounded-md"
+		>
 			<Sketch setup={setup} draw={draw} />
 		</div>
 	);

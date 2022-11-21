@@ -37,6 +37,7 @@ export default function HebbAnd() {
 					network={hebbNetwork.CurrentNetwork}
 					width={500}
 					height={500}
+					floatingPoints={0}
 				/>
 				<PrimaryButton text="Reset network" onClick={ResetNetwork} />
 

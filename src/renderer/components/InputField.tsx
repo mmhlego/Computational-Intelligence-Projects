@@ -23,7 +23,7 @@ export default function InputField({
 }: Props) {
 	return (
 		<div
-			className={`flex items-center h-[30px] bg-[#333741] rounded-md text-center border-[#626977] border-[1px] ${className}`}
+			className={`flex items-center h-[30px] bg-[#333741] rounded-md text-center border-[#ffffff20] border-[1px] ${className}`}
 		>
 			{label && <p className="min-w-fit w-1/2 mx-2">{`${label}`}</p>}
 			<input

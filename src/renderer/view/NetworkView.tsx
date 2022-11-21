@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 /* eslint-disable import/no-cycle */
 /* eslint-disable react/button-has-type */
 import { HardLimit } from 'main/model/ActivationFunctions';
@@ -13,9 +14,15 @@ interface Props {
 	network: Network;
 	width: number;
 	height: number;
+	floatingPoints?: number;
 }
 
-export default function NetworkView({ network, width, height }: Props) {
+export default function NetworkView({
+	network,
+	width,
+	height,
+	floatingPoints = 2,
+}: Props) {
 	const layerWidth = (width - 80) / (network.Size - 1);
 
 	const drawEdge = (
@@ -38,7 +45,7 @@ export default function NetworkView({ network, width, height }: Props) {
 		p5.stroke(51);
 		p5.strokeWeight(2);
 		p5.textSize(14);
-		p5.text(edge.Weight.toFixed(2), x3, y3);
+		p5.text(edge.Weight.toFixed(floatingPoints), x3, y3);
 	};
 
 	const drawEdges = (p5: p5Types) => {
