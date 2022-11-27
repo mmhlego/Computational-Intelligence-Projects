@@ -6,6 +6,8 @@ export default class Neuron {
 	// The output value of the neuron
 	public Value: number = 0;
 
+	public NetInput: number = 0;
+
 	// w_0 w_1 ... w_n
 	// w_0 represents the bias value and the others represent the weight between the weight between the current and the ith neuron on the previous layer
 	public ConnectedEdges: Edge[] = [];
@@ -45,13 +47,14 @@ export default class Neuron {
 
 		this.IsActive = true;
 
-		let sum = 1 * this.ConnectedEdges[0].Weight;
+		this.NetInput = 1 * this.ConnectedEdges[0].Weight;
 
 		for (let i = 0; i < neurons.length; i += 1) {
-			sum += neurons[i].Value * this.ConnectedEdges[i + 1].Weight;
+			this.NetInput +=
+				neurons[i].Value * this.ConnectedEdges[i + 1].Weight;
 		}
 
-		this.Value = this.ActivationFunction(sum);
+		this.Value = this.ActivationFunction(this.NetInput);
 	};
 
 	SetValue = (value: number) => {

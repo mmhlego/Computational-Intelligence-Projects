@@ -26,4 +26,8 @@ export function Sigmoid(input: number): number {
 	return 1 / (1 + Math.exp(-input));
 }
 
+export function SigmoidBipolar(input: number): number {
+	return 2 / (1 + Math.exp(-input)) - 1;
+}
+
 export type ActivationFunctionType = (input: number) => number;

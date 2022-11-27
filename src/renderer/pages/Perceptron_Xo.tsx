@@ -8,7 +8,7 @@ import InputField from 'renderer/components/InputField';
 import PrimaryButton from 'renderer/components/PrimaryButton';
 import Toggle from 'renderer/components/Toggle';
 import TrainController from 'renderer/components/TrainController';
-import shuffleArray from 'renderer/utils';
+import ShuffleArray from 'renderer/utils';
 import InputGridView from 'renderer/view/InputGridView';
 import NetworkView from 'renderer/view/NetworkView';
 
@@ -37,7 +37,7 @@ export default function PerceptronXo() {
 	}, [theta, learningRate, perceptronNetwork]);
 
 	useEffect(() => {
-		setTrainData(shuffleArray(XoData));
+		setTrainData(ShuffleArray(XoData));
 	}, []);
 
 	return (
