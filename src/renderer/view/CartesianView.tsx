@@ -126,8 +126,6 @@ export default function CartesianView({
 				);
 			}
 		}
-
-		console.log(slope, cross);
 	};
 
 	return (

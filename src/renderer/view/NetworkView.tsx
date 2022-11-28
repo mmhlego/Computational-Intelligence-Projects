@@ -126,6 +126,7 @@ export default function NetworkView({
 	const setup = (p5: p5Types, canvasParentRef: Element) => {
 		p5.createCanvas(width, height).parent(canvasParentRef);
 		p5.textAlign('center', 'center');
+		p5.frameRate(4);
 	};
 
 	const draw = (p5: p5Types) => {
@@ -137,7 +138,7 @@ export default function NetworkView({
 	const ctx = useContext(MainContext);
 
 	return (
-		<div id="canvasHolder" className="relative">
+		<div id="canvasHolder" className="relative flex justify-center">
 			<button
 				onClick={() => {
 					navigator.clipboard.writeText(

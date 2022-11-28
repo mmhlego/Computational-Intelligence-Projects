@@ -6,7 +6,6 @@ import {
 } from 'main/model/ActivationFunctions';
 
 export default function ShuffleArray(array: any[]) {
-	console.log('shuffle');
 	const result = array;
 	for (let i = result.length - 1; i > 0; i -= 1) {
 		const j = Math.floor(Math.random() * (i + 1));

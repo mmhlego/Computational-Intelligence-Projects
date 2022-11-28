@@ -30,7 +30,7 @@ export default function Toggle({
 
 	return (
 		<div
-			className={`h-[30px] w-fit bg-[#333741] rounded-md text-center border-[#626977] border-[1px] relative cursor-pointer ${className}`}
+			className={`h-[30px] bg-[#333741] rounded-md text-center border-[#626977] border-[1px] relative cursor-pointer ${className}`}
 			onClick={ToggleValue}
 		>
 			<div

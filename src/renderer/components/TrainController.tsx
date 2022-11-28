@@ -72,7 +72,6 @@ export default function TrainController({
 				) {
 					accuracy += 1;
 				}
-				console.log(output, ValidateData[i].Output);
 			}
 			accuracy = (accuracy * 100) / ValidateData.length;
 
@@ -165,7 +164,7 @@ export default function TrainController({
 							started ? 'text-white' : 'text-[#ffffff50]'
 						}`}
 					>
-						Max Δw: {currentChange}
+						Max Δw: {currentChange.toFixed(3)}
 					</p>
 				</div>
 			</div>

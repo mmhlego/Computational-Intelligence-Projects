@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-syntax */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-continue */
 import P5Types from 'p5';
@@ -156,16 +157,21 @@ export const CreateHoverText = (
 	parent: string,
 	text: string
 ) => {
-	const infoElement = p5.createDiv(text);
+	const infoElement = p5.createDiv();
 	infoElement.parent(parent);
 	infoElement.position(x, y);
 	infoElement.style(
-		'padding:5px; background:#282c34; font-size:12px; border-radius:10px;'
+		'padding:5px; background:#282c34; font-size:12px; border-radius:10px; word-wrap: break-word; display:flex: flex-direction:col;'
 	);
+
+	const lines = text.split('\n');
+	for (const t of lines) {
+		p5.createP(t).parent(infoElement);
+	}
 
 	infoElement.hide();
 	const hoverElement = p5.createDiv();
-	hoverElement.position(x - 10, y - 10);
+	hoverElement.position(x - width / 2, y - height / 2);
 	hoverElement.size(width, height);
 	hoverElement.parent(parent);
 	hoverElement.style('cursor: help;');

@@ -38,7 +38,6 @@ export default function PerceptronAnd() {
 	useEffect(() => {
 		perceptronNetwork.Theta = theta;
 		perceptronNetwork.LearningRate = learningRate;
-		console.log(1);
 	}, [theta, learningRate, perceptronNetwork]);
 
 	return (
