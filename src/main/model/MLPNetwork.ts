@@ -26,15 +26,14 @@ export default class MLPNetwork implements NetworkInterface {
 			neurons,
 			activationFunction,
 			activationFunction,
-			// 'random' // TODO
-			0 // TODO
+			'random'
 		);
 
 		this.LearningRate = learningRate;
 	}
 
 	Train = (data: NetworkData) => {
-		// const MaxChanged = 0;
+		let MaxChanged = 0;
 
 		this.Evaluate(data.Input);
 
@@ -45,51 +44,55 @@ export default class MLPNetwork implements NetworkInterface {
 		for (let i = 0; i < data.Output.length; i += 1) {
 			const target = data.Output[i];
 			const output = this.CurrentNetwork.Neurons[layers - 1][i].Value;
-			const ni = this.CurrentNetwork.Neurons[layers - 1][i].Value;
+			const ni = this.CurrentNetwork.Neurons[layers - 1][i].NetInput;
 
 			currentDelta.push((target - output) * this.DerivativeFunction(ni));
 		}
 
 		for (let layer = layers - 1; layer > 0; layer -= 1) {
-			console.log('Current Delta', currentDelta);
-
 			const currentSize = this.CurrentNetwork.Neurons[layer].length;
 			const rearSize = this.CurrentNetwork.Neurons[layer - 1].length;
 
-			currentDelta = [...newDelta];
 			newDelta = Array(rearSize).fill(0);
 
-			console.log('New Delta', newDelta);
-
-			for (let k = 1; k < currentSize; k += 1) {
+			for (let k = 0; k < currentSize; k += 1) {
 				const delta = currentDelta[k];
+				const db = this.LearningRate * delta;
 
 				this.CurrentNetwork.Neurons[layer][
 					k
-				].ConnectedEdges[0].AddWeight(this.LearningRate * delta);
+				].ConnectedEdges[0].AddWeight(db);
+
+				MaxChanged = Math.max(MaxChanged, db);
 
 				for (let j = 0; j < rearSize; j += 1) {
 					const zj = this.CurrentNetwork.Neurons[layer - 1][j].Value;
+
+					const dw = this.LearningRate * delta * zj;
+					this.CurrentNetwork.Neurons[layer][k].ConnectedEdges[
+						j + 1
+					].AddWeight(dw);
+
+					MaxChanged = Math.max(MaxChanged, dw);
+
 					const wj =
 						this.CurrentNetwork.Neurons[layer][k].ConnectedEdges[
 							j + 1
 						].Weight;
-
-					this.CurrentNetwork.Neurons[layer][k].ConnectedEdges[
-						j + 1
-					].AddWeight(this.LearningRate * delta * zj);
-
 					newDelta[j] += delta * wj;
+				}
+
+				for (let j = 0; j < rearSize; j += 1) {
+					const ni =
+						this.CurrentNetwork.Neurons[layer - 1][j].NetInput;
+					newDelta[j] *= this.DerivativeFunction(ni);
 				}
 			}
 
-			console.log('New Delta', newDelta);
+			currentDelta = newDelta;
 		}
 
-		// TODO
-
-		// return MaxChanged;
-		return 0;
+		return MaxChanged;
 	};
 
 	Evaluate = (data: number[]) => {

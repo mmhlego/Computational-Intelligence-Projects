@@ -2,6 +2,7 @@
 import DataGenerator from './pages/DataGenerator';
 import HebbAnd from './pages/Hebb_And';
 import HebbXo from './pages/Hebb_Xo';
+import MLPThyroid from './pages/MLP_Thyroid';
 import PerceptronAnd from './pages/Perceptron_And';
 import PerceptronXo from './pages/Perceptron_Xo';
 import PerceptronXo2 from './pages/Perceptron_Xo_D';
@@ -72,6 +73,15 @@ export const Projects: ProjectInfo[] = [
 		input: '25 Input nodes',
 		output: '2 Output nodes',
 		children: <PerceptronXo2 />,
+	},
+	{
+		menuTitle: 'Thyroid Detection - MLP Network',
+		title: 'Thyroid detection using multilayer perceptron network.',
+		description: '---', // TODO Complete the description
+		algorithm: 'Multilayer Perceptron Algorithm',
+		input: '?',
+		output: '1 Output node',
+		children: <MLPThyroid />,
 	},
 	{
 		menuTitle: 'Data Generator',
