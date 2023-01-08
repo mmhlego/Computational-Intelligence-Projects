@@ -1,5 +1,4 @@
 import p5Types from 'p5';
-import { CreateHoverText } from 'renderer/p5utils';
 import { ActivationFunctionType } from './ActivationFunctions';
 import Edge from './Edge';
 
@@ -77,17 +76,17 @@ export default class Neuron {
 	};
 
 	Draw = (p5: p5Types, x: number, y: number) => {
-		CreateHoverText(
-			p5,
-			x,
-			y,
-			30,
-			30,
-			'#canvasHolder',
-			`Net Input: ${this.NetInput.toFixed(
-				2
-			)}\nOutput: ${this.Value.toFixed(2)}`
-		);
+		// CreateHoverText(
+		// 	p5,
+		// 	x,
+		// 	y,
+		// 	30,
+		// 	30,
+		// 	'#canvasHolder',
+		// 	`Net Input: ${this.NetInput.toFixed(
+		// 		2
+		// 	)}\nOutput: ${this.Value.toFixed(2)}`
+		// );
 
 		p5.fill(255);
 		p5.stroke(255);

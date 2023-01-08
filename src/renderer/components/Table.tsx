@@ -35,7 +35,7 @@ export default function Table({
 					{AllData.map((rowData, index) => (
 						<tr
 							key={index}
-							className={`border-b ease-in-out duration-200 ${
+							className={`border-b ease-in-out duration-200 last:border-b-0 ${
 								SelectedIndexes?.includes(index)
 									? 'bg-[#22c55e]'
 									: ''

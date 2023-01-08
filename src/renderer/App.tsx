@@ -11,10 +11,6 @@ export default function App() {
 	const [CurrentProject, setCurrentProject] = useState<ProjectInfo>();
 	const [alertVisible, setAlertVisible] = useState(false);
 
-	const setProject = (newProject: ProjectInfo) => {
-		setCurrentProject(newProject);
-	};
-
 	const ctx = useContext(MainContext);
 
 	useEffect(() => {
@@ -36,14 +32,14 @@ export default function App() {
 			/>
 
 			<Sidebar
-				onItemClicked={setProject}
+				onItemClicked={setCurrentProject}
 				selectedProject={CurrentProject}
 			/>
 			{CurrentProject ? (
 				<ProjectPage project={CurrentProject} />
 			) : (
 				<div className="w-3/4 h-full flex justify-center items-center">
-					<Home />
+					<Home setCurrentProject={setCurrentProject} />
 				</div>
 			)}
 		</div>

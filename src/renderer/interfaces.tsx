@@ -74,15 +74,15 @@ export const Projects: ProjectInfo[] = [
 		output: '2 Output nodes',
 		children: <PerceptronXo2 />,
 	},
-	{
-		menuTitle: 'Thyroid Detection - MLP Network',
-		title: 'Thyroid detection using multilayer perceptron network.',
-		description: '---', // TODO Complete the description
-		algorithm: 'Multilayer Perceptron Algorithm',
-		input: '?',
-		output: '1 Output node',
-		children: <MLPThyroid />,
-	},
+	// {
+	// 	menuTitle: 'Thyroid Detection - MLP Network',
+	// 	title: 'Thyroid detection using multilayer perceptron network.',
+	// 	description: '---', // TODO Complete the description
+	// 	algorithm: 'Multilayer Perceptron Algorithm',
+	// 	input: '?',
+	// 	output: '1 Output node',
+	// 	children: <MLPThyroid />,
+	// },
 	{
 		menuTitle: 'Data Generator',
 		title: 'Neural Network Data Generator',

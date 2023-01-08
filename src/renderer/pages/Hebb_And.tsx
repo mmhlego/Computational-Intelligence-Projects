@@ -35,8 +35,8 @@ export default function HebbAnd() {
 			<div className="row-span-2">
 				<NetworkView
 					network={hebbNetwork.CurrentNetwork}
-					width={500}
-					height={500}
+					width={400}
+					height={400}
 					floatingPoints={0}
 				/>
 				<PrimaryButton text="Reset network" onClick={ResetNetwork} />
